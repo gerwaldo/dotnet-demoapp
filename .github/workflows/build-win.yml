@@ -9,8 +9,8 @@ on:
 # Note. Required secrets: dockerPassword, acrPassword
 
 env:
-  dockerUser: bencuk
-  acrName: bcdemo
+  dockerUser: gerwaldoacr
+  acrName: gerwaldoacr
   imageName: dotnet-demoapp
   # Use Windows container Nanoserver base image
   imageBase: 3.1-nanoserver-1809
