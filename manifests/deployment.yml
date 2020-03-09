@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: "goaks"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "goaks"
+    spec:
+      containers:
+        - name: "goaks"
+          image: "gerwaldoacr.azurecr.io/goaks"
+          ports:
+          - containerPort: 80
