@@ -1,7 +1,7 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: K8-Demo-App
+  name: demo-app
 spec:
   replicas: 2
   selector:
