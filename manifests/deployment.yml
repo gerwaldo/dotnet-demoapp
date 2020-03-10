@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
         - name: "goaks"
-          image: "gerwaldoacr.azurecr.io/goaks"
+          image: "gerwaldoacr.azurecr.io/apps/dotnet-demoapp"
           ports:
           - containerPort: 80
