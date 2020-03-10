@@ -1,16 +1,16 @@
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: "dotnet-demoapp"
+  name: K8-Demo-App
 spec:
   replicas: 2
   template:
     metadata:
       labels:
-        app: "dotnet-demoapp"
+        app: web
     spec:
       containers:
-        - name: "dotnet-demoapp"
-          image: "apps/dotnet-demoapp"
+        - name: dotnet-demoapp
+          image: apps/dotnet-demoapp
           ports:
           - containerPort: 80
