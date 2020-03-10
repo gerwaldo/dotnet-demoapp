@@ -74,18 +74,47 @@ jobs:
         username: ${{ env.acrName }}
         password: ${{ secrets.acrPassword }}  
 
-    - name: Helm install Dotnet-Demoapp
-      uses: deliverybot/helm@v1
-      with:
-        helm: helm3
-        release: dotnet
-        namespace: demoapps
-        chart: https://code.benco.io/helm-charts/webapp-1.2.0.tgz
-        value-files: ./kubernetes/app.yaml
-        values: |
-          image:
-            tag: '${{ env.imageTag }}'
-            repository: ${{ env.acrName }}.azurecr.io/apps/${{ env.imageName }}
-          ingress:
-            host: ${{ env.host }}
+#    - name: Helm install Dotnet-Demoapp
+#      uses: deliverybot/helm@v1
+#      with:
+#        helm: helm3
+#        release: dotnet
+#        namespace: demoapps
+#        chart: https://code.benco.io/helm-charts/webapp-1.2.0.tgz
+#        value-files: ./kubernetes/app.yaml
+#        values: |
+#          image:
+#            tag: '${{ env.imageTag }}'
+#            repository: ${{ env.acrName }}.azurecr.io/apps/${{ env.imageName }}
+#          ingress:
+#            host: ${{ env.host }}
 
+# Create Sp for AZ Login (AZ_CRED): az ad sp create-for-rbac --sdk-auth
+
+    -name: Set the target AKS cluster.
+      uses: Azure/aks-set-context@v1
+      with:
+        creds: '${{ secrets.AZ_CRED }}'
+        cluster-name: goaks
+        resource-group: ContainerRG
+
+    -name: Registry  
+      uses: Azure/k8s-create-secret@v1
+      with:
+        container-registry-url: ${{ env.acrName }}.azurecr.io
+        container-registry-username: ${{ env.acrName }}
+        container-registry-password: ${{ secrets.acrPassword }}
+        secret-name: donet-demoapp-sec
+
+    -name: Deployment
+      uses: Azure/k8s-deploy@v1
+      with:
+        manifests: |
+          manifests/deployment.yml
+          manifests/service.yml
+        images: |
+          '${{ env.acrName }}.azurecr.io/apps/${{ env.imageName }}'
+        imagepullsecrets: |
+          dotnet-demoapp-sec 
+
+      
