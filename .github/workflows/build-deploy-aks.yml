@@ -9,12 +9,12 @@ on:
 # Note. Required secrets: dockerPassword, acrPassword & kubeConfig
 
 env:
-  dockerUser: bencuk
-  acrName: bcdemo
+  dockerUser: gerwaldoacr
+  acrName: gerwaldoacr
   imageName: dotnet-demoapp
   # Use Windows container Nanoserver base image
   imageBase: 3.1-alpine
-  host: dotnet-demoapp.kube.benco.io
+  host: dotnet-demoapp
 
 jobs:
   buildJob:
@@ -30,15 +30,6 @@ jobs:
       
     - name: Build the Docker image
       run: docker build . --build-arg IMAGE_BASE=$imageBase --tag $dockerUser/$imageName:latest --tag $acrName.azurecr.io/apps/$imageName:$imageTag --tag $acrName.azurecr.io/apps/$imageName:latest
-    
-    - name: Dockerhub Login
-      uses: Azure/docker-login@v1
-      with:
-        username: ${{ env.dockerUser }}
-        password: ${{ secrets.dockerPassword }} 
-
-    - name: Push to Dockerhub
-      run: docker push $dockerUser/$imageName
       
     - name: ACR Login
       uses: Azure/docker-login@v1
