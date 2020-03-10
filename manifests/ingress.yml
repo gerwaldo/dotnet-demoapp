@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-    name: "goaks"
+    name: "dotnet-demoapp"
     labels:
-        app: "goaks"
+        app: "dotnet-demoapp"
     annotations:
         kubernetes.io/ingress.class: addon-http-application-routing
 spec:
     rules:
-        - host: goaks056b-goaks.9d8a1bf6e21740a9a39f.westeurope.aksapp.io
+        - host: dotnet-demoapp-goaks.9d8a1bf6e21740a9a39f.westeurope.aksapp.io
           http:
             paths:
             - path: /
               backend:
-                serviceName: "goaks"
+                serviceName: "dotnet-demoapp"
                 servicePort: 80
