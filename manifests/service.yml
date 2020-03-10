@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: "goaks"
+    name: "demo-app"
     labels:
-        app: "goaks"
+        app: "web"
 spec:
     type: ClusterIP
     ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
     selector:
-        app: "goaks"
+        app: "web"
