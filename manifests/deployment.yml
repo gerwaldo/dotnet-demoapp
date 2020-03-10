@@ -1,16 +1,16 @@
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: "goaks"
+  name: "dotnet-demoapp"
 spec:
   replicas: 2
   template:
     metadata:
       labels:
-        app: "goaks"
+        app: "dotnet-demoapp"
     spec:
       containers:
-        - name: "goaks"
+        - name: "dotnet-demoapp"
           image: "gerwaldoacr.azurecr.io/apps/dotnet-demoapp"
           ports:
           - containerPort: 80
