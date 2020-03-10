@@ -113,5 +113,4 @@ jobs:
          manifests/deployment.yml
          manifests/service.yml
        images: ${{ env.acrName }}.azurecr.io/apps/${{ env.imageName }}
-        imagepullsecrets: dotnet-demoapp-sec 
-
+        imagepullsecrets: dotnet-demoapp-sec
