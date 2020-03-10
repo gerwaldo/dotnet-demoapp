@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
         - name: "dotnet-demoapp"
-          image: "gerwaldoacr.azurecr.io/apps/dotnet-demoapp"
+          image: "apps/dotnet-demoapp:latest"
           ports:
           - containerPort: 80
