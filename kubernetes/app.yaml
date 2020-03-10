@@ -13,7 +13,7 @@ secretEnv:
     secretKey: aadAppSecret
 
 env: 
-  ApplicationInsights__InstrumentationKey: ace55567-7613-45ce-a2b6-f967aa74362e
+  ApplicationInsights__InstrumentationKey: 95ca3185-c8b8-4789-be9c-c85b11340ec1
   AzureAd__ClientId: 3584ac39-1ab1-4fe6-a3dd-4b2fbedc9d7d
   AzureAd__Instance: https://login.microsoftonline.com/
   AzureAd__TenantId: common
