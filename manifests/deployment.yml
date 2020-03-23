@@ -1,16 +1,16 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: demo-app
+  name: dotnet-demoapp
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: web
+      app: dotnet-demoapp
   template:
     metadata:
       labels:
-        app: web
+        app: dotnet-demoapp
     spec:
       containers:
         - name: dotnet-demoapp
