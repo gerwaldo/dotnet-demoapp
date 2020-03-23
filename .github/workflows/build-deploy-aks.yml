@@ -104,7 +104,7 @@ jobs:
        container-registry-url: ${{ env.acrName }}.azurecr.io
        container-registry-username: ${{ env.acrName }}
        container-registry-password: ${{ secrets.acrPassword }}
-       secret-name: donet-demoapp-sec
+       secret-name: dotnet-demoapp-sec
 
     - name: Deployment
       uses: Azure/k8s-deploy@v1
