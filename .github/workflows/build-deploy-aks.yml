@@ -1,4 +1,4 @@
-name: Build & Deploy AKS
+name: Build & Deploy AKS demo-app
 
 on: 
   push: 
